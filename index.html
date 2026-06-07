@@ -101,6 +101,34 @@ section{padding:clamp(70px,11vh,140px) 0; position:relative}
 .faq details[open] summary .pl{transform:rotate(45deg)}
 .faq .ans{padding:0 0 28px; font-size:1.05rem; color:#d8d2c8; max-width:62ch}
 
+/* journey timeline */
+.journey{position:relative; margin-top:54px; padding-left:8px}
+.journey-spine{position:absolute; left:30px; top:10px; bottom:10px; width:3px; background:rgba(200,170,122,.18); overflow:hidden}
+.journey-spine .fill{position:absolute; top:0; left:0; width:100%; height:0; background:var(--gold); transition:height 1.4s cubic-bezier(.2,.7,.2,1)}
+.journey.lit .journey-spine .fill{height:100%}
+.phase-label{font-family:'Barlow Condensed',sans-serif; font-weight:800; text-transform:uppercase; letter-spacing:.22em; font-size:.82rem; color:var(--gold); margin:38px 0 20px; padding-left:62px}
+.phase-label:first-child{margin-top:0}
+.jstep{position:relative; padding-left:62px; margin-bottom:30px; opacity:0; transform:translateY(20px); transition:.7s cubic-bezier(.2,.7,.2,1)}
+.jstep.in{opacity:1; transform:none}
+.jdot{position:absolute; left:13px; top:2px; width:36px; height:36px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:1.2rem; color:#0a0a0a}
+.jstep h4{font-family:'Barlow Condensed',sans-serif; font-weight:800; text-transform:uppercase; letter-spacing:.02em; font-size:1.5rem; line-height:1; margin-bottom:6px}
+.jstep p{font-size:1rem; color:#cfc8bc; max-width:48ch; line-height:1.55}
+.jpeak{position:relative; margin:6px 0 30px; margin-left:0; padding:30px 30px 30px 62px; background:var(--gold); border-radius:14px; opacity:0; transform:translateY(20px); transition:.7s cubic-bezier(.2,.7,.2,1)}
+.jpeak.in{opacity:1; transform:none}
+.jpeak .jdot{background:#0a0a0a; color:var(--gold)}
+.jpeak h4{font-family:'Barlow Condensed',sans-serif; font-weight:900; text-transform:uppercase; letter-spacing:.02em; font-size:2rem; line-height:1; color:#0a0a0a; margin-bottom:14px}
+.jpeak .pk{color:#1a150d; font-size:1.05rem; line-height:1.5; margin-bottom:4px}
+.jpeak .pk.bold{font-family:'Barlow Condensed',sans-serif; font-weight:800; text-transform:uppercase; letter-spacing:.03em; font-size:1.3rem; color:#0a0a0a; margin-top:12px}
+.jend{position:relative; padding-left:62px; opacity:0; transform:translateY(20px); transition:.7s cubic-bezier(.2,.7,.2,1)}
+.jend.in{opacity:1; transform:none}
+.jend .jdot{background:transparent; border:3px solid var(--gold); top:0}
+.jend .jdot span{width:9px; height:9px; border-radius:50%; background:var(--gold)}
+.jend h4{font-family:'Barlow Condensed',sans-serif; font-weight:800; text-transform:uppercase; font-size:1.4rem; color:var(--ink); margin-bottom:6px}
+.jend p{font-size:1rem; color:#cfc8bc}
+@media(max-width:600px){
+  .journey-spine{left:22px} .jdot{left:5px; width:34px; height:34px}
+  .jstep,.jend,.phase-label{padding-left:54px} .jpeak{padding-left:54px}
+}
 /* meet the coach */
 .coach-sec{background:linear-gradient(180deg,#15120d 0%,#12100b 100%); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
 .coach-sec .split{align-items:center}
@@ -246,11 +274,24 @@ footer .lg{font-family:'Barlow Condensed',sans-serif; font-weight:900; letter-sp
     <span class="eyebrow kick rv">A program, not just an event</span>
     <h2 class="lead rv">The coaching starts the day <span class="g">you sign up</span> &mdash; not the day you arrive</h2>
     <div class="body rv"><p>From the moment you&rsquo;re in, you&rsquo;re in the group: WhatsApp coaching and the Wildman app, supporting your training all the way to the event. The incentive is simple &mdash; the earlier you commit, the more runway you get, and the better shape you arrive in.</p></div>
-    <div class="runway">
-      <div class="rv"><span class="n">01</span><span class="t">Sign up &mdash; you&rsquo;re straight into the coaching group and the app.</span></div>
-      <div class="rv"><span class="n">02</span><span class="t">Programming and support build your base in the weeks before Marbella.</span></div>
-      <div class="rv"><span class="n">03</span><span class="t">Four days on the mountain &mdash; challenged hard, recovered properly.</span></div>
-      <div class="rv"><span class="n">04</span><span class="t">You take the change home &mdash; to work, to family, to how you lead.</span></div>
+    <div class="journey" id="journey">
+      <div class="journey-spine"><div class="fill"></div></div>
+
+      <div class="phase-label rv">Before</div>
+      <div class="jstep"><div class="jdot">1</div><h4>Sign up</h4><p>You commit. The clock starts in your favour &mdash; the earlier you&rsquo;re in, the more runway you get.</p></div>
+      <div class="jstep"><div class="jdot">2</div><h4>Start training</h4><p>Straight into the group, the app, the work. Supported from day one.</p></div>
+      <div class="jstep"><div class="jdot">3</div><h4>Get coached up</h4><p>Built into the best physical and mental shape you can arrive in.</p></div>
+
+      <div class="phase-label rv">The four days</div>
+      <div class="jpeak"><div class="jdot">4</div><h4>The event</h4>
+        <p class="pk">Find your strengths. Face your weaknesses.</p>
+        <p class="pk">Challenge yourself past the point where you&rsquo;d normally stop.</p>
+        <p class="pk bold">Raise your standards.</p>
+      </div>
+
+      <div class="phase-label rv">After</div>
+      <div class="jstep"><div class="jdot">5</div><h4>Bring it home</h4><p>Implement what you learned about yourself into your world &mdash; the value pours back out, to work, to family, to how you lead.</p></div>
+      <div class="jend"><div class="jdot"><span></span></div><h4>A different man</h4><p>Not the one who signed up.</p></div>
     </div>
   </div>
 </section>
@@ -381,6 +422,16 @@ footer .lg{font-family:'Barlow Condensed',sans-serif; font-weight:900; letter-sp
 <script>
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4*0.07)+'s';io.observe(el)});
+const jrn=document.getElementById('journey');
+if(jrn){
+  const steps=jrn.querySelectorAll('.jstep,.jpeak,.jend');
+  const jio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){
+    jrn.classList.add('lit');
+    steps.forEach((st,i)=>{setTimeout(()=>st.classList.add('in'), 250+i*260)});
+    jio.unobserve(e.target);
+  }})},{threshold:.2});
+  jio.observe(jrn);
+}
 </script>
 </body>
 </html>
